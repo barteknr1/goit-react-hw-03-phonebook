@@ -23,6 +23,7 @@ class App extends Component {
           number
         }]
       })
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
     }
   };
 
@@ -42,10 +43,14 @@ class App extends Component {
     const { contacts } = this.state;
     const newContacts = contacts.filter(contact => contact.id !== id);
     this.setState({ contacts: newContacts });
+    localStorage.setItem("contacts", JSON.stringify(newContacts));
   };
 
 
   render() {
+    const savedContacts = localStorage.getItem("contacts");
+    const parsedContacts = JSON.parse(savedContacts);
+    console.log(parsedContacts);
   return (
     <>
       <h1>Phonebook</h1>
