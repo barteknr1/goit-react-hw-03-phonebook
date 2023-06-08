@@ -1,0 +1,18 @@
+.inputName {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(163, 28, 248);
+  margin-bottom: 10px;
+}
+.input {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(163, 28, 248);
+  padding: 10px;
+  padding-left: 15px;
+  width: 300px;
+  border-radius: 15px;
+  border-style: dotted;
+  outline-color: rgb(224, 174, 255);
+  background-color: rgb(210, 197, 255);
+}

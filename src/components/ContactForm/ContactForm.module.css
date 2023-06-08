@@ -1,0 +1,33 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.inputName {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(163, 28, 248);
+}
+.input {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(163, 28, 248);
+  padding: 10px;
+  padding-left: 15px;
+  width: 300px;
+  border-radius: 15px;
+  border-style: dotted;
+  outline-color: rgb(224, 174, 255);
+  background-color: rgb(210, 197, 255);
+}
+.add {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(163, 28, 248);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid rgb(163, 28, 248);
+  background-color: rgb(210, 197, 255);
+}
