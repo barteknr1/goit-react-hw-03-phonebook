@@ -8,7 +8,15 @@ class App extends Component {
   state = {
     contacts: [],
     filter: '',
-  }
+  };
+  componentDidMount() {
+    const savedContacts = localStorage.getItem("contacts");
+    const parsedContacts = JSON.parse(savedContacts);
+    this.setState({contacts: parsedContacts});
+  };
+  componentDidUpdate() {
+    localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+  };
 
   handleSubmit = (name, number) => {
     const { contacts } = this.state;
@@ -23,7 +31,7 @@ class App extends Component {
           number
         }]
       })
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+      
     }
   };
 
@@ -46,20 +54,23 @@ class App extends Component {
     localStorage.setItem("contacts", JSON.stringify(newContacts));
   };
 
-
   render() {
-    const savedContacts = localStorage.getItem("contacts");
-    const parsedContacts = JSON.parse(savedContacts);
-    console.log(parsedContacts);
-  return (
-    <>
-      <h1>Phonebook</h1>
-      <ContactForm onSubmit={this.handleSubmit} />
-      <h2>Contacts</h2>
-      <Filter onChange={this.handleFilter} />
-      <ContactList contacts={this.filteredContacts()} onClick={this.handleDelete} />
-    </>
-  )}
+    return (
+      <>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.handleSubmit} />
+        <h2>Contacts</h2>
+        <Filter onChange={this.handleFilter} />
+        {this.state.contacts.length > 0 && (
+          <div>
+            <h3>Found {this.filteredContacts().length} of {this.state.contacts.length} contacts</h3>
+            <progress value={this.filteredContacts().length} max={this.state.contacts.length} />
+          </div>
+        )}
+        <ContactList contacts={this.filteredContacts()} onClick={this.handleDelete} />
+      </>
+    )
+  }
 };
 
 export default App
