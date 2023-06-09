@@ -61,7 +61,7 @@ class App extends Component {
         <ContactForm onSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
         <Filter onChange={this.handleFilter} />
-        {this.state.contacts.length > 0 && (
+        {this.state.contacts.length && (
           <div>
             <h3>Found {this.filteredContacts().length} of {this.state.contacts.length} contacts</h3>
             <progress value={this.filteredContacts().length} max={this.state.contacts.length} />
