@@ -55,16 +55,18 @@ class App extends Component {
   };
 
   render() {
+    const { contacts } = this.state;
+    const isAnyContactSaved = contacts.length > 0;
     return (
       <>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
         <Filter onChange={this.handleFilter} />
-        {this.state.contacts.length !== null && (
+        {isAnyContactSaved && (
           <div>
-            <h3>Found {this.filteredContacts().length} of {this.state.contacts.length} contacts</h3>
-            <progress value={this.filteredContacts().length} max={this.state.contacts.length} />
+            <h3>Found {this.filteredContacts().length} of {contacts.length} contacts</h3>
+            <progress value={this.filteredContacts().length} max={contacts.length} />
           </div>
         )}
         <ContactList contacts={this.filteredContacts()} onClick={this.handleDelete} />
