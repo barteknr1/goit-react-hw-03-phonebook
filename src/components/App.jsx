@@ -11,8 +11,10 @@ class App extends Component {
   };
   componentDidMount() {
     const savedContacts = localStorage.getItem("contacts");
-    const parsedContacts = JSON.parse(savedContacts);
-    this.setState({ contacts: parsedContacts });
+    if (savedContacts) {
+      const parsedContacts = JSON.parse(savedContacts);
+      this.setState({ contacts: parsedContacts });
+    };
   };
   componentDidUpdate() {
     localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
@@ -57,6 +59,7 @@ class App extends Component {
   render() {
     const { contacts } = this.state;
     const isAnyContactSaved = contacts.length > 0;
+    console.log(isAnyContactSaved);
     return (
       <>
         <h1>Phonebook</h1>
