@@ -58,9 +58,7 @@ class App extends Component {
 
   render() {
     const { contacts } = this.state;
-    console.log(contacts.length);
     const isAnyContactSaved = contacts.length > 0;
-    console.log(`is any contact saved`, isAnyContactSaved);
     return (
       <>
         <h1>Phonebook</h1>
