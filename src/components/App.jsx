@@ -12,7 +12,7 @@ class App extends Component {
   componentDidMount() {
     const savedContacts = localStorage.getItem("contacts");
     const parsedContacts = JSON.parse(savedContacts);
-    this.setState({contacts: parsedContacts});
+    this.setState({ contacts: parsedContacts });
   };
   componentDidUpdate() {
     localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
@@ -61,7 +61,7 @@ class App extends Component {
         <ContactForm onSubmit={this.handleSubmit} />
         <h2>Contacts</h2>
         <Filter onChange={this.handleFilter} />
-        {this.state.contacts.length && (
+        {this.state.contacts.length !== null && (
           <div>
             <h3>Found {this.filteredContacts().length} of {this.state.contacts.length} contacts</h3>
             <progress value={this.filteredContacts().length} max={this.state.contacts.length} />
